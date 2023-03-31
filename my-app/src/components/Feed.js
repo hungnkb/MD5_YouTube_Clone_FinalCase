@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 
 import { fetchFromAPI } from "../utils/fetchFromAPI";
-import { Videos, Sidebar } from "./";
+import { Sidebar } from "./";
+import Videos from './homevideo/Videos'
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
@@ -21,7 +22,7 @@ const Feed = () => {
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         
         <Typography className="copyright" variant="body2" sx={{ mt: 1.5, color: "#fff", }}>
-          Copyright © 2022 JSM Media
+          Copyright © 2023 HiHi
         </Typography>
       </Box>
 
