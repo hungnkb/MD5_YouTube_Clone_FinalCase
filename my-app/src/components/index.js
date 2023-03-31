@@ -1,5 +1,6 @@
 export { default as ChannelCard } from './ChannelCard';
-export { default as VideoCard } from './homevideo/VideoCardHome';
+export { default as VideoCardHome } from './homevideo/VideoCardHome';
+export { default as VideoCard } from './VideoCard';
 export { default as ChannelDetail } from './ChannelDetail';
 export { default as Feed } from './Feed';
 export { default as Loader } from './Loader';
