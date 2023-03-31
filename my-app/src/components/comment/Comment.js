@@ -9,7 +9,7 @@ const Comment = (props) => {
         fetchFromAPI(`commentThreads?parth=snippet&videoId=${props.data}&maxResults=20`)
             .then((data) => setComments(data.items))
         fetchFromAPI(`commentThreads?parth=snippet&videoId=${props.data}&maxResults=20`)
-            .then((data) => console.log(data.items))
+            .then((data) => null)
     }, [props.data])
     return (
         <Stack>
