@@ -2,8 +2,6 @@ import React from "react";
 import { Stack } from "@mui/material";
 
 import { categories } from "../utils/constants";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import {Link} from "react-router-dom";
 
 const Categories = ({ selectedCategory, setSelectedCategory }) => (
   <Stack
@@ -11,7 +9,7 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => (
     sx={{
       overflowY: "auto",
       height: { sx: "auto", md: "95%" },
-      flexDirection: { md: "column" },
+      flexDirection: { md: "column" }
     }}
   >
     {categories.map((category) => (
