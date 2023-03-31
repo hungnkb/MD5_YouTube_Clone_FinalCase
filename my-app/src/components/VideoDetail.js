@@ -14,7 +14,6 @@ import Comment from "./comment/Comment";
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
-  const [comments, setComments] = useState(null)
   const { id } = useParams();
   const axios = require("axios");
   const data = id
@@ -34,6 +33,13 @@ const VideoDetail = () => {
     fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
         .then((data) => setVideos(data.items))
   }, [id]);
+
+  useEffect(() => {
+    fetchFromAPI(`commentThreads?parth=snippet&videoId=${id}&maxResults=100`)
+    .then((data) => setComments(data.items))
+  }, [id])
+
+console.log(comments);  
 
   if (!videoDetail?.snippet) return <Loader />;
 
@@ -100,7 +106,7 @@ const VideoDetail = () => {
       </Stack>
       <Stack style={{color: 'black'}}>
         <Box>
-          Add a comment
+          add a comment 
         </Box>
 
       </Stack>
