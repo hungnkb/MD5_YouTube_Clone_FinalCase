@@ -27,7 +27,6 @@ const VideoCardPlayer = ({ video: { id: { videoId }, snippet }}) => (
         </Link>
       </CardContent>
     </Stack>
-
   </Card>
 );
 
