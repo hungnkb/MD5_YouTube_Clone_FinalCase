@@ -1,4 +1,4 @@
-import { Button, IconButton, Stack, Box } from "@mui/material"
+import { Button, IconButton, Stack, Box, Input } from "@mui/material"
 import { useState } from "react";
 import axios from "axios";
 
@@ -17,6 +17,9 @@ export const Upload = () => {
         e.preventDefault();
         let formData = new FormData();
         formData.append('file', fileUpload);
+        formData.append('title', e.target.title.value);
+        formData.append('tags', e.target.tags.value);
+        formData.append('description', e.target.description.value);
         let response = await axios.post('http://localhost:9090/upload', formData, {
             headers: { 'Content-Type': 'multipart/form-data' }
         });
@@ -35,6 +38,24 @@ export const Upload = () => {
                 </IconButton>
                 <p>{fileUploadName}</p>
                 <Button variant="contained" type="submit">Upload</Button>
+                <div>
+                    <Input
+                        name="title"
+                        id="title"
+                        placeholder="title"
+                    />
+                    <Input
+                        name="description"
+                        id="description"
+                        placeholder="description"
+                    />
+                     <Input
+                        name="tags"
+                        id="tags"
+                        placeholder="tags"
+                    />
+                </div>
+
             </form>
         </>
     )
