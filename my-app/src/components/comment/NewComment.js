@@ -7,6 +7,7 @@ import axios from 'axios';
 const NewComment = (props) => {
     const [newcomment, setNewComment] = useState();
     const accessToken = useSelector(state => state.auth.user.aToken);
+    const imgUser = useSelector(state => state.auth.user.dataUser.photos[0].value);
 
     const sendData = () => {
         props.parentCallback();
@@ -46,8 +47,8 @@ const NewComment = (props) => {
 
 
     return(
-        <div className="comment-box">
-            <img src="https://via.placeholder.com/50x50" alt="Avatar" className="avatar"/>
+        <div style={{ marginLeft: 25 }} className="comment-box">
+            <img src={imgUser} alt="Avatar" className="avatar"/>
                 <div className="comment-form">
                 <form onClick={handleSubmit}>
                     <textarea onChange={handleChange}  id="comment-input" name="comment-input" rows="1"

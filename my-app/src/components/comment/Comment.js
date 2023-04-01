@@ -15,7 +15,7 @@ const Comment = (props) => {
     return (
         <Stack>
       <Box>
-        <div style={{ padding: 14 }} className="App">
+        <div style={{ padding: 20 }} className="App">
           <h2>Comments</h2>
             {comments.map((comment, index) => (
           <Paper key={index} style={{ padding: "40px 20px" }}>
