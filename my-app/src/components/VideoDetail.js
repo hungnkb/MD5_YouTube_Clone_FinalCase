@@ -18,28 +18,27 @@ const VideoDetail = () => {
   const axios = require("axios");
   const data = id
 
-  useEffect(() => {
-    fetchFromAPI(`commentThreads?parth=snippet&videoId=${id}&maxResults=100`)
-        .then((data) => setComments(data.items))
-  }, [id])
+  // useEffect(() => {
+  //   fetchFromAPI(`commentThreads?part=snippet&videoId=${id}&maxResults=100`)
+  //       .then((data) => setComments(data.items))
+  // }, [id])
 
-  useEffect(() => {
-    fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
-      .then((data) => setVideoDetail(data.items[0]))
+  // useEffect(() => {
+  //   fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
+  //     .then((data) => setVideoDetail(data.items[0]))
 
-    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
-      .then((data) => setVideos(data.items))
+  //   fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
+  //     .then((data) => setVideos(data.items))
 
-    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
-        .then((data) => setVideos(data.items))
-  }, [id]);
+  //   fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
+  //       .then((data) => setVideos(data.items))
+  // }, [id]);
 
-  useEffect(() => {
-    fetchFromAPI(`commentThreads?parth=snippet&videoId=${id}&maxResults=100`)
-    .then((data) => setComments(data.items))
-  }, [id])
+  // useEffect(() => {
+  //   fetchFromAPI(`commentThreads?parth=snippet&videoId=${id}&maxResults=100`)
+  //   .then((data) => setComments(data.items))
+  // }, [id])
 
-console.log(comments);  
 
   if (!videoDetail?.snippet) return <Loader />;
 
