@@ -8,8 +8,6 @@ const Comment = (props) => {
     useEffect(() => {
         fetchFromAPI(`commentThreads?parth=snippet&videoId=${props.data}&maxResults=20`)
             .then((data) => setComments(data.items))
-        fetchFromAPI(`commentThreads?parth=snippet&videoId=${props.data}&maxResults=20`)
-            .then((data) => null)
     }, [props.data])
     return (
         <Stack>
