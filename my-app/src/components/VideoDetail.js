@@ -14,15 +14,9 @@ import Comment from "./comment/Comment";
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
-  const [comments, setComments] = useState(null)
   const { id } = useParams();
   const axios = require("axios");
   const data = id
-
-  useEffect(() => {
-    fetchFromAPI(`commentThreads?parth=snippet&videoId=${id}&maxResults=100`)
-        .then((data) => setComments(data.items))
-  }, [id])
 
   useEffect(() => {
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
@@ -34,6 +28,7 @@ const VideoDetail = () => {
     fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
         .then((data) => setVideos(data.items))
   }, [id]);
+
 
   if (!videoDetail?.snippet) return <Loader />;
 
@@ -51,29 +46,6 @@ const VideoDetail = () => {
               {title}
             </Typography>
             <Comment data={data}/>
-            {/*<Stack>*/}
-            {/*  <Box>*/}
-            {/*    <div style={{ padding: 14 }} className="App">*/}
-            {/*      <h2>Comments</h2>*/}
-            {/*      <Paper style={{ padding: "40px 20px" }}>*/}
-            {/*        <Grid container wrap="nowrap" spacing={2}>*/}
-            {/*          <Grid item>*/}
-            {/*            <Avatar alt="Remy Sharp"  />*/}
-            {/*          </Grid>*/}
-            {/*          <Grid justifyContent="left" item xs zeroMinWidth>*/}
-            {/*            <h4 style={{ margin: 0, textAlign: "left" }}>Michel Michel</h4>*/}
-            {/*            <p style={{ textAlign: "left", color: "black", width: "1300px"}}>*/}
-            {/*              Lorem ipsum dolor sit amet, consectetur adipiscing elit*/}
-            {/*            </p>*/}
-            {/*            <p style={{ textAlign: "left", color: "gray" }}>*/}
-            {/*              posted 1 minute ago*/}
-            {/*            </p>*/}
-            {/*          </Grid>*/}
-            {/*        </Grid>*/}
-            {/*      </Paper>*/}
-            {/*    </div>*/}
-            {/*  </Box>*/}
-            {/*</Stack>*/}
             <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
               <Link to={`/channel/${channelId}`}>
                 <Typography variant={{ sm: "subtitle1", md: 'h6' }} color="#fff" >
@@ -100,7 +72,7 @@ const VideoDetail = () => {
       </Stack>
       <Stack style={{color: 'black'}}>
         <Box>
-          Add a comment
+          add a comment 
         </Box>
 
       </Stack>
