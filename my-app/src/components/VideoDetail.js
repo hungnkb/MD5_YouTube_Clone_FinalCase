@@ -45,29 +45,6 @@ const VideoDetail = () => {
                   {title}
                 </Typography>
                 <Comment data={data}/>
-                {/*<Stack>*/}
-                {/*  <Box>*/}
-                {/*    <div style={{ padding: 14 }} className="App">*/}
-                {/*      <h2>Comments</h2>*/}
-                {/*      <Paper style={{ padding: "40px 20px" }}>*/}
-                {/*        <Grid container wrap="nowrap" spacing={2}>*/}
-                {/*          <Grid item>*/}
-                {/*            <Avatar alt="Remy Sharp"  />*/}
-                {/*          </Grid>*/}
-                {/*          <Grid justifyContent="left" item xs zeroMinWidth>*/}
-                {/*            <h4 style={{ margin: 0, textAlign: "left" }}>Michel Michel</h4>*/}
-                {/*            <p style={{ textAlign: "left", color: "black", width: "1300px"}}>*/}
-                {/*              Lorem ipsum dolor sit amet, consectetur adipiscing elit*/}
-                {/*            </p>*/}
-                {/*            <p style={{ textAlign: "left", color: "gray" }}>*/}
-                {/*              posted 1 minute ago*/}
-                {/*            </p>*/}
-                {/*          </Grid>*/}
-                {/*        </Grid>*/}
-                {/*      </Paper>*/}
-                {/*    </div>*/}
-                {/*  </Box>*/}
-                {/*</Stack>*/}
                 <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
                   <Link to={`/channel/${channelId}`}>
                     <Typography variant={{ sm: "subtitle1", md: 'h6' }} color="#fff" >
