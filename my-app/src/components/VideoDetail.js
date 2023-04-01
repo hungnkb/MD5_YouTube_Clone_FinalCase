@@ -10,10 +10,12 @@ import Videos from './Videos';
 // import { Divider, Avatar, Grid, Paper } from "@material-ui/core";
 import {logo} from "../utils/constants";
 import Comment from "./comment/Comment";
+import NewComment from "./comment/NewComment";
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
+  const [flag, setFlag] = useState(true)
   const { id } = useParams();
   const axios = require("axios");
   const data = id
@@ -28,6 +30,10 @@ const VideoDetail = () => {
     fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
         .then((data) => setVideos(data.items))
   }, [id]);
+
+  const callbackFunction = (childData) => {
+    setFlag(!flag)
+  }
 
   if (!videoDetail?.snippet) return <Loader />;
 
@@ -44,7 +50,9 @@ const VideoDetail = () => {
                 <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
                   {title}
                 </Typography>
-                <Comment data={data}/>
+                <NewComment data={data} parentCallback={callbackFunction} />
+                <p> {flag} </p>
+                <Comment data={data} flag={flag}/>
                 <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
                   <Link to={`/channel/${channelId}`}>
                     <Typography variant={{ sm: "subtitle1", md: 'h6' }} color="#fff" >

@@ -1,21 +1,24 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
 import {fetchFromAPI} from "../../utils/fetchFromAPI";
 import {Avatar, Box, Grid, Paper, Stack} from "@mui/material";
+const axios = require('axios');
 
 const Comment = (props) => {
+    console.log(props.flag,4444)
     const [comments, setComments] = useState([])
     useEffect(() => {
-        fetchFromAPI(`commentThreads?parth=snippet&videoId=${props.data}&maxResults=20`)
-            .then((data) => setComments(data.items))
-    }, [props.data])
+        axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyB_bL1Q50ZCMfBJxTndy55Hs4Yxo--u_MI&videoId=${props.data}&part=snippet&maxResults=100`)
+            .then((data) => setComments(data.data.items))
+        console.log('more')
+    }, [props])
+
     return (
         <Stack>
       <Box>
         <div style={{ padding: 14 }} className="App">
           <h2>Comments</h2>
             {comments.map((comment, index) => (
-          <Paper style={{ padding: "40px 20px" }}>
+          <Paper key={index} style={{ padding: "40px 20px" }}>
             <Grid container wrap="nowrap" spacing={2}>
               <Grid item>
                 <Avatar alt="Remy Sharp" src={comment.snippet.topLevelComment.snippet.authorProfileImageUrl} />
