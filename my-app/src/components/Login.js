@@ -1,8 +1,10 @@
-import { Button } from "@mui/material"
+import { Button } from "@mui/material";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export const Login = () => {
-    const handleLogin = () => {
-        window.open('http://localhost:9090/auth/google', '_self')
+    const handleLogin = async () => {
+        window.open('http://localhost:9090/auth/google', '_self');
     }
     return (
         <>
