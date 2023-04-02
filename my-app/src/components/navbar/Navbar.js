@@ -11,6 +11,10 @@ import { MenuProfile } from "./MenuProfile";
 const Navbar = () => {
   const currentState = useSelector(state => state.auth)
 
+  const handleLogin = () => {
+    window.open('http://localhost:9090/auth/google', '_self')
+  }
+
   return (
     <>
       <Stack direction="row" alignItems="center" p={2} sx={{ position: "sticky", background: 'white', top: 0, justifyContent: "space-between" }}>
@@ -25,12 +29,12 @@ const Navbar = () => {
                 <FileUploadIcon />
               </Link>
 
-                <MenuProfile title={currentState.user.dataUser.displayName} avatar={currentState.user.dataUser.photos[0].value}/>
+              <MenuProfile title={currentState.user.dataUser.displayName} avatar={currentState.user.dataUser.photos[0].value} />
 
             </>
           )
 
-          : <p><Link to='/login'>< AccountCircleIcon /></Link></p>}
+          : < AccountCircleIcon onClick={handleLogin} style={{ cursor: 'pointer' }} fontSize='large' />}
       </Stack>
     </>
   )
