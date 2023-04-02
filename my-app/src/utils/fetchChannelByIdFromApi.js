@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const fetchChannelByIdFromApi = async (aToken) => {
-    const URL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&mine=true&key=${process.env.CLIENT_ID}`;
+    const URL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&mine=true&key=${process.env.REACT_APP_CLIENT_ID}`;
     const { data } = await axios.get(URL, {
         headers: {
             Authorization: `Bearer ${aToken}`,
