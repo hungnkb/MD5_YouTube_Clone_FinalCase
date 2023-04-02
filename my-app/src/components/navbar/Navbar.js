@@ -25,7 +25,7 @@ const Navbar = () => {
                 <FileUploadIcon />
               </Link>
 
-                <MenuProfile title={currentState.user.dataUser.displayName}/>
+                <MenuProfile title={currentState.user.dataUser.displayName} avatar={currentState.user.dataUser.photos[0].value}/>
 
             </>
           )
