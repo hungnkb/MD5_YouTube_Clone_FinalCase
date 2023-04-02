@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Box } from '@mui/material';
 import { ChannelDetail, VideoDetail, SearchFeed, Navbar, Feed } from './components';
-import { Upload } from "./components/Upload";
+import { Upload } from "./upload/Upload";
 import { Login } from "./components/Login";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
