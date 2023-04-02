@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Box } from '@mui/material';
 import { ChannelDetail, VideoDetail, SearchFeed, Navbar, Feed, Sidebar } from './components';
 import { Upload } from "./upload/Upload";
@@ -41,9 +41,9 @@ const App = () => {
           <Route path='/video/:id' element={<VideoDetail />} />
           <Route path='/channel/:id' element={<ChannelDetail />} />
           <Route path='/search/:searchTerm' element={<SearchFeed />} />
-          <Route path='/upload' element={<Upload />} />
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/upload' element={currentState.isLogined ? <Upload /> : <Navigate to='/' />} />
+          <Route path='/login' element={currentState.isLogined ? <Navigate to='/' /> : <Login />}></Route>
+          <Route path='/profile' element={currentState.isLogined ? <Profile /> : <Navigate to='/' />}></Route>
         </Routes>
       </Box>
     </BrowserRouter >

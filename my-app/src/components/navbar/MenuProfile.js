@@ -9,6 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import { maxWidth } from "@mui/system";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { NavLink } from 'react-router-dom'
+import axios from "axios";
 
 export const MenuProfile = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -23,6 +24,10 @@ export const MenuProfile = (props) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const handleLogout = async () => {
+        // await axios.get('http://localhost:9090/auth/logout')
+        window.open('http://localhost:9090/auth/logout', '_self')
+    }
 
     return (
         <>
@@ -86,7 +91,7 @@ export const MenuProfile = (props) => {
                         <NavLink to='/profile'>Profile</NavLink>
                     </MenuItem>
                     <Divider />
-                    <MenuItem onClick={handleClose}>
+                    <MenuItem onClick={handleLogout}>
                         <ListItemIcon>
                             <LogoutIcon fontSize="small" sx={{ paddingRight: '0px' }} />
                         </ListItemIcon>
