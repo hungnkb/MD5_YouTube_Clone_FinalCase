@@ -7,31 +7,31 @@ import { VideoCardHome } from '../components';
 import { fetchChannelFromApi } from '../utils/getChannelFromApi';
 
 export const TableUpload = () => {
-    const [videoList, setVideoList] = useState([]);
-    const [channel, setChannel] = useState({});
-    const currentState = useSelector(state => state.auth)
-    useEffect(() => {
-        const getVideoList = async () => {
-            if (currentState.user.aToken) {
-                let dataVideoList = await fetchChannelByIdFromApi(currentState.user.aToken)
-                if (dataVideoList) {
-                    setVideoList(dataVideoList);
-                }
-            }
-        }
-        getVideoList()
-    }, [currentState.user.aToken])
+    // const [videoList, setVideoList] = useState([]);
+    // const [channel, setChannel] = useState({});
+    // const currentState = useSelector(state => state.auth)
+    // useEffect(() => {
+    //     const getVideoList = async () => {
+    //         if (currentState.user.aToken) {
+    //             let dataVideoList = await fetchChannelByIdFromApi(currentState.user.aToken)
+    //             if (dataVideoList) {
+    //                 setVideoList(dataVideoList);
+    //             }
+    //         }
+    //     }
+    //     getVideoList()
+    // }, [currentState.user.aToken])
 
-    useEffect(() => {
-        const getChannel = async () => {
-            let channelData = await fetchChannelFromApi(currentState.user.aToken)
-            if (channelData) {
-                setChannel(channelData);
-            }
-        }
-        getChannel();
-    }, [currentState.user.aToken])
-    console.log(videoList);
+    // useEffect(() => {
+    //     const getChannel = async () => {
+    //         let channelData = await fetchChannelFromApi(currentState.user.aToken)
+    //         if (channelData) {
+    //             setChannel(channelData);
+    //         }
+    //     }
+    //     getChannel();
+    // }, [currentState.user.aToken])
+    // console.log(videoList);
 
     return (
         <>
