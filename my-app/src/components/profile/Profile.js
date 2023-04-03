@@ -65,7 +65,7 @@ export const Profile = () => {
                             <h3>Hường Xink</h3>
                             <p>@huongxink6618 </p>
                             <p>Không có người đăng ký</p>
-                            <p> 6 video</p>
+                            <p> 0 video</p>
                         </div>
                         <div className="col-4">
                             <div className="row">

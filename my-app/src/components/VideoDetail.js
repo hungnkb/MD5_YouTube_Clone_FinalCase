@@ -40,51 +40,61 @@ const VideoDetail = () => {
   const { snippet: { title, channelId, channelTitle }, statistics: { viewCount, likeCount } } = videoDetail;
 
   return (
+      <div >
+        <div className="row">
+          <div className="col-2">
+            <Sidebar/>
+          </div>
+          <div className="col-10">
+            <Box minHeight="95vh">
+              <Stack direction={{ xs: "column", md: "row"}}>
+                <div>
+                  <Box flex={1}>
+                    <Box sx={{ width: 760, position: "sticky", top: "36px" }}>
+                      <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
+                      <Typography color="black" variant="h5" fontWeight="bold" p={2}>
+                        {title}
+                      </Typography>
+                      <p> {flag} </p>
+                      <Comment data={data} flag={flag}/>
+                      <Stack direction="row" justifyContent="space-between" sx={{ color: "black" }} py={1} px={2} >
+                        <Link to={`/channel/${channelId}`}>
+                          <Typography variant={{ sm: "subtitle1", md: 'h6' }} color="black" >
+                            {channelTitle}
+                            <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
+                          </Typography>
+                        </Link>
+                        <Stack direction="row" gap="20px" alignItems="center">
+                          <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                            {parseInt(viewCount).toLocaleString()} views
+                          </Typography>
+                          <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                            {parseInt(likeCount).toLocaleString()} likes
+                          </Typography>
+                        </Stack>
+                      </Stack>
+                    </Box>
+                  </Box>
+                </div>
+                <Box px={2} py={{ md: 1, xs: 5 }} justifyContent="center" alignItems="center" >
+                  <Videos videos={videos} direction="column" />
+                </Box>
 
+              </Stack>
+              <Stack style={{color: 'black'}}>
+                <Box>
+                  add a comment
+                </Box>
 
-      <Box minHeight="95vh">
-        <Stack direction={{ xs: "column", md: "row" }}>
-          <div>
-            <Box flex={1}>
-              {/*<Sidebar/>*/}
-              <Box sx={{ width: 860, position: "sticky", top: "36px" }}>
-                <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
-                <Typography color="black" variant="h5" fontWeight="bold" p={2}>
-                  {title}
-                </Typography>
-                <p> {flag} </p>
-                <Comment data={data} flag={flag}/>
-                <Stack direction="row" justifyContent="space-between" sx={{ color: "black" }} py={1} px={2} >
-                  <Link to={`/channel/${channelId}`}>
-                    <Typography variant={{ sm: "subtitle1", md: 'h6' }} color="black" >
-                      {channelTitle}
-                      <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
-                    </Typography>
-                  </Link>
-                  <Stack direction="row" gap="20px" alignItems="center">
-                    <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                      {parseInt(viewCount).toLocaleString()} views
-                    </Typography>
-                    <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                      {parseInt(likeCount).toLocaleString()} likes
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Box>
+              </Stack>
             </Box>
           </div>
-          <Box px={2} py={{ md: 1, xs: 5 }} justifyContent="center" alignItems="center" >
-            <Videos videos={videos} direction="column" />
-          </Box>
+        </div>
 
-        </Stack>
-        <Stack style={{color: 'black'}}>
-          <Box>
-            add a comment
-          </Box>
+      </div>
 
-        </Stack>
-      </Box>
+
+
 
   );
 };
