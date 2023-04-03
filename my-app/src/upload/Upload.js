@@ -2,11 +2,13 @@ import { Button, IconButton, Stack, Box, Input, Select, MenuItem, InputLabel, Co
 import { useState } from "react";
 import axios from "axios";
 import { TableUpload } from "./Table";
+import { useSelector } from "react-redux";
 
 export const Upload = () => {
     const [fileUploadName, setFileUploadName] = useState('');
     const [fileUpload, setFileUpload] = useState('');
     const [selected, setSelected] = useState('');
+    const currentState = useSelector(state => state.auth);
     const handleBrowseFile = (event) => {
         let filePath = event.target.value;
         let fileUploadSplit = filePath.split("\\")[2]
@@ -59,6 +61,7 @@ export const Upload = () => {
         formData.append('title', e.target.title.value);
         formData.append('tags', e.target.tags.value);
         formData.append('description', e.target.description.value);
+        formData.append('rToken', currentState.user.rToken)
         let response = await axios.post('http://localhost:9090/upload', formData, {
             headers: { 'Content-Type': 'multipart/form-data' }
         });
@@ -74,10 +77,6 @@ export const Upload = () => {
         <>
             <Container maxWidth="sm">
                 <form onSubmit={e => handleUploadFile(e)} encType="multipart/form-data">
-                    <Button type="button" variant="contained" component="label">
-                        Browse
-                        <input hidden onChange={(event) => handleBrowseFile(event)} accept="video/mp4" multiple type="file" />
-                    </Button>
                     <IconButton color="primary" aria-label="upload picture" component="label">
                     </IconButton>
                     <p>{fileUploadName}</p>
@@ -117,11 +116,15 @@ export const Upload = () => {
                             ))}
                         </Select> */}
                     </div>
-                    <Button variant="contained" type="submit">Upload</Button>
+                    <Stack>
+                        <Button type="button" variant="contained" component="label">
+                            Browse
+                            <input hidden onChange={(event) => handleBrowseFile(event)} accept="video/mp4" multiple type="file" />
+                        </Button>
+                        <Button variant="contained" type="submit">Upload</Button>
+                    </Stack>
                 </form>
-
             </Container>
-
             <TableUpload />
         </>
     )
