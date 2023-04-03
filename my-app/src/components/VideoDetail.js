@@ -4,16 +4,18 @@ import ReactPlayer from "react-player";
 import { Typography, Box, Stack, Divider, Avatar, Grid, Paper  } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-import { Loader } from ".";
+import {Loader, Sidebar} from ".";
 import { fetchFromAPI } from "../utils/fetchFromAPI"
 import Videos from './Videos';
 // import { Divider, Avatar, Grid, Paper } from "@material-ui/core";
 import {logo} from "../utils/constants";
 import Comment from "./comment/Comment";
+import NewComment from "./comment/NewComment";
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
+  const [flag, setFlag] = useState(true)
   const { id } = useParams();
   const axios = require("axios");
   const data = id
@@ -29,6 +31,10 @@ const VideoDetail = () => {
         .then((data) => setVideos(data.items))
   }, [id]);
 
+  const callbackFunction = (childData) => {
+    setFlag(!flag)
+  }
+
   if (!videoDetail?.snippet) return <Loader />;
 
   const { snippet: { title, channelId, channelTitle }, statistics: { viewCount, likeCount } } = videoDetail;
@@ -40,12 +46,15 @@ const VideoDetail = () => {
         <Stack direction={{ xs: "column", md: "row" }}>
           <div>
             <Box flex={1}>
+              {/*<Sidebar/>*/}
               <Box sx={{ width: 860, position: "sticky", top: "36px" }}>
                 <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
                 <Typography color="black" variant="h5" fontWeight="bold" p={2}>
                   {title}
                 </Typography>
-                <Comment data={data}/>
+                {/*<NewComment data={data} parentCallback={callbackFunction} />*/}
+                <p> {flag} </p>
+                <Comment data={data} flag={flag}/>
                 <Stack direction="row" justifyContent="space-between" sx={{ color: "black" }} py={1} px={2} >
                   <Link to={`/channel/${channelId}`}>
                     <Typography variant={{ sm: "subtitle1", md: 'h6' }} color="#fff" >
