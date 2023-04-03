@@ -1,9 +1,12 @@
 import axios from 'axios';
+
 export const BASE_URL = 'https://youtube-v31.p.rapidapi.com';
-export const fetchFromAPI = async (url) => {
+
+export const fetchNextPage = async (url, nextPageToken) => {
     const options = {
         params: {
             maxResults: 20,
+            nextPageToken: nextPageToken,
         },
         headers: {
             'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
@@ -12,6 +15,5 @@ export const fetchFromAPI = async (url) => {
     };
 
     const { data } = await axios.get(`${BASE_URL}/${url}`, options);
-    console.log(data);
     return data;
 };

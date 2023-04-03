@@ -10,7 +10,7 @@ const NewComment = (props) => {
     const imgUser = useSelector(state => state.auth.user.dataUser.photos[0].value);
 
     const sendData = () => {
-        props.parentCallback();
+        props.parentCallback(newcomment);
     }
 
     const  handleChange = (event) => {
@@ -43,9 +43,6 @@ const NewComment = (props) => {
           });
         sendData()
       }
-
-
-
     return(
         <div style={{ marginLeft: 25 }} className="comment-box">
             <img src={imgUser} alt="Avatar" className="avatar"/>

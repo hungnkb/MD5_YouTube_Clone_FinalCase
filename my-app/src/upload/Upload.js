@@ -136,7 +136,6 @@ export const Upload = () => {
                     </Stack>
                 </form>
             </Container>
-            <TableUpload />
         </>
     )
 }

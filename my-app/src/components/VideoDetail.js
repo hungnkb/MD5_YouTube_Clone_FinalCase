@@ -32,7 +32,7 @@ const VideoDetail = () => {
   }, [id]);
 
   const callbackFunction = (childData) => {
-    setFlag(!flag)
+    setFlag(childData)
   }
 
   if (!videoDetail?.snippet) return <Loader />;
@@ -55,7 +55,8 @@ const VideoDetail = () => {
                       <Typography color="black" variant="h5" fontWeight="bold" p={2}>
                         {title}
                       </Typography>
-                      <p> {flag} </p>
+                        <p>{}</p>
+                        <NewComment data={data} parentCallback={callbackFunction} />
                       <Comment data={data} flag={flag}/>
                       <Stack direction="row" justifyContent="space-between" sx={{ color: "black" }} py={1} px={2} >
                         <Link to={`/channel/${channelId}`}>
