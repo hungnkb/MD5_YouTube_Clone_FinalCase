@@ -86,9 +86,11 @@ export const MenuProfile = (props) => {
                 >
                     <MenuItem onClick={handleClose}>
                         <ListItemIcon>
-                            <AccountCircleIcon fontSize="medium" sx={{ paddingRight: '15px' }} />
+                            <AccountCircleIcon/>
                         </ListItemIcon>
-                        <NavLink to='/profile'>Profile</NavLink>
+                        <NavLink to='/profile'>
+                        Profile
+                        </NavLink>
                     </MenuItem>
                     <Divider />
                     <MenuItem onClick={handleLogout}>

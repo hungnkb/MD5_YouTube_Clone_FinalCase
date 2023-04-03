@@ -16,7 +16,7 @@ const Comment = (props) => {
     return (
         <Stack>
       <Box>
-        <div style={{ padding: 20 }} className="App">
+        <div style={{ padding: 14, width:760}} className="App">
           <h2>Comments</h2>
             <Paper style={{ padding: "40px 20px" }}>
                 <Grid container wrap="nowrap" spacing={2}>
@@ -42,7 +42,7 @@ const Comment = (props) => {
               </Grid>
               <Grid justifyContent="left" item xs zeroMinWidth>
                 <h4 style={{ margin: 0, textAlign: "left" }}>{comment.snippet.topLevelComment.snippet.authorDisplayName}</h4>
-                <p style={{ textAlign: "left", color: "black", width: "1300px"}}>
+                <p style={{ textAlign: "left", color: "black", width: "600px"}}>
                     {comment.snippet.topLevelComment.snippet.textDisplay}
                 </p>
                 <p style={{ textAlign: "left", color: "gray" }}>
