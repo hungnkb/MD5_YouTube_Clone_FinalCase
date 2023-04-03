@@ -52,12 +52,11 @@ const VideoDetail = () => {
                 <Typography color="black" variant="h5" fontWeight="bold" p={2}>
                   {title}
                 </Typography>
-                {/*<NewComment data={data} parentCallback={callbackFunction} />*/}
                 <p> {flag} </p>
                 <Comment data={data} flag={flag}/>
                 <Stack direction="row" justifyContent="space-between" sx={{ color: "black" }} py={1} px={2} >
                   <Link to={`/channel/${channelId}`}>
-                    <Typography variant={{ sm: "subtitle1", md: 'h6' }} color="#fff" >
+                    <Typography variant={{ sm: "subtitle1", md: 'h6' }} color="black" >
                       {channelTitle}
                       <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
                     </Typography>

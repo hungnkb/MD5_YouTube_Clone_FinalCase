@@ -29,5 +29,4 @@ const VideoCardPlayer = ({ video: { id: { videoId }, snippet }}) => (
     </Stack>
   </Card>
 );
-
 export default VideoCardPlayer

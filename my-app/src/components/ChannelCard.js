@@ -36,7 +36,6 @@ const ChannelCard = ({ channelDetail, marginTop }) => (
         )}
       </CardContent>
     </Link>
-      hehehehe
   </Box>
 );
 
