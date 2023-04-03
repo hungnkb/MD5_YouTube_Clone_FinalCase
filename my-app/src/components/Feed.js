@@ -6,12 +6,12 @@ import { Sidebar } from "./";
 import Videos from './homevideo/Videos'
 
 const Feed = () => {
-  const [selectedCategory, setSelectedCategory] = useState("New");
+  const [selectedCategory, setSelectedCategory] = useState("Trend");
   const [videos, setVideos] = useState(null);
 
   useEffect(() => {
     setVideos(null);
-
+    console.log(selectedCategory);
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
       .then((data) => setVideos(data.items))
     }, [selectedCategory]);

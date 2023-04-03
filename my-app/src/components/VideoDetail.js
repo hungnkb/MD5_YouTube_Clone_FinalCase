@@ -50,7 +50,7 @@ const VideoDetail = () => {
                 <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
                   {title}
                 </Typography>
-                <NewComment data={data} parentCallback={callbackFunction} />
+                {/* <NewComment data={data} parentCallback={callbackFunction} /> */}
                 <p> {flag} </p>
                 <Comment data={data} flag={flag}/>
                 <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
