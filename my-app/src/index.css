@@ -11,6 +11,10 @@ a {
 }
 
 ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.MuiStack-root.css-185otve-MuiStack-root::-webkit-scrollbar {
   width: 0px;
   height: 5px;
 }
@@ -75,9 +79,9 @@ a {
 }
 
 @media screen and (max-width: 600px) {
-  .scroll-horizontal {
+  /* .scroll-horizontal {
     overflow: auto !important;
-  }
+  } */
 
   .react-player {
     height: 45vh !important;
