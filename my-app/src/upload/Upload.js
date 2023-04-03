@@ -77,10 +77,6 @@ export const Upload = () => {
         <>
             <Container maxWidth="sm">
                 <form onSubmit={e => handleUploadFile(e)} encType="multipart/form-data">
-                    <Button type="button" variant="contained" component="label">
-                        Browse
-                        <input hidden onChange={(event) => handleBrowseFile(event)} accept="video/mp4" multiple type="file" />
-                    </Button>
                     <IconButton color="primary" aria-label="upload picture" component="label">
                     </IconButton>
                     <p>{fileUploadName}</p>
@@ -120,11 +116,15 @@ export const Upload = () => {
                             ))}
                         </Select> */}
                     </div>
-                    <Button variant="contained" type="submit">Upload</Button>
+                    <Stack>
+                        <Button type="button" variant="contained" component="label">
+                            Browse
+                            <input hidden onChange={(event) => handleBrowseFile(event)} accept="video/mp4" multiple type="file" />
+                        </Button>
+                        <Button variant="contained" type="submit">Upload</Button>
+                    </Stack>
                 </form>
-
             </Container>
-
             <TableUpload />
         </>
     )
