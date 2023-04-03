@@ -1,15 +1,20 @@
-import { useSelector } from "react-redux";
-import { useEffect, useState } from 'react';
-import { fetchChannelByIdFromApi } from "../../utils/fetchChannelByIdFromApi";
-import { VideoCardHr } from "../videocard/VideoCard";
-import { fetchChannelFromApi } from "../../utils/getChannelFromApi";
-import { Stack, Box } from "@mui/material";
+import {useSelector} from "react-redux";
+import React, {useEffect, useState} from 'react';
+import {fetchChannelByIdFromApi} from "../../utils/fetchChannelByIdFromApi";
+import {VideoCardHr} from "../videocard/VideoCard";
+import {fetchChannelFromApi} from "../../utils/getChannelFromApi";
+import {Stack, Box} from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
+import {Button} from "react-bootstrap";
+import Sidebar from "../Sidebar";
+import {fetchFromAPI} from "../../utils/fetchFromAPI";
 
 export const Profile = () => {
     const currentAuth = useSelector(state => state.auth)
     const [videoList, setVideoList] = useState({});
     const [channel, setChannel] = useState({});
+    const [selectedCategory, setSelectedCategory] = useState("Trend");
+    const [videos, setVideos] = useState(null);
     useEffect(() => {
         let getVideData = async () => {
             let videoData = await fetchChannelByIdFromApi(currentAuth.user.aToken)
@@ -17,7 +22,7 @@ export const Profile = () => {
                 setVideoList(videoData)
             }
         }
-        getVideData();
+        getVideData()
     }, [currentAuth.user.aToken])
 
     useEffect(() => {
@@ -30,17 +35,75 @@ export const Profile = () => {
         getChannelData();
     }, [currentAuth.user.aToken])
 
+
+    useEffect(() => {
+        setVideos(null);
+        console.log(selectedCategory);
+        fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
+            .then((data) => setVideos(data.items))
+    }, [selectedCategory]);
+
     return (
         <>
-            {videoList.length > 0 ? <Stack sx={{ display: 'flex', flexWrap: 'wrap' }} direction='row'>
-                {videoList.length > 0 && (
-                    videoList.map((video, index) => {
-                        return <VideoCardHr key={index} video={video} channel={channel} />
-                    })
-                )}
-            </Stack> : <Box sx={{ display: 'flex', marginLeft: '50%', marginTop: '100px' }}>
-                <CircularProgress sx={{alignSelf: 'center'}} />
-            </Box>}
+            <div className="row" >
+                <div className="col-2">
+                    <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+
+                </div>
+                <div className="col-9">
+                    <div className="row">
+                        <div className="col-2">
+                            <center>
+                                <img style={{width: 150}}
+                                     src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                                     className="rounded-circle"
+                                     alt="Avatar"
+                                />
+                            </center>
+                        </div>
+                        <div className="col-6">
+                            <h3>Hường Xink</h3>
+                            <p>@huongxink6618 </p>
+                            <p>Không có người đăng ký</p>
+                            <p> 6 video</p>
+                        </div>
+                        <div className="col-4">
+                            <div className="row">
+                                <div className="col-5">
+                                    <Button variant="light">Tùy chỉnh kênh</Button>
+                                </div>
+                                <div className="col-5">
+                                    <Button variant="light">Quản lí video</Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-2">
+
+                        </div>
+                        <div className="col-10">
+                            <h6> Danh sách video </h6>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div className="row">
+                        <div className="col-12">
+                            {videoList ? <Stack sx={{display: 'flex', flexWrap: 'wrap'}} direction='row'>
+                                {videoList.length > 0 && (
+                                    videoList.map((video, index) => {
+                                        return <VideoCardHr key={index} video={video} channel={channel}/>
+                                    })
+                                )}
+                            </Stack> : <Box sx={{display: 'flex', marginLeft: '50%', marginTop: '100px'}}>
+                                <CircularProgress sx={{alignSelf: 'center'}}/>
+                            </Box>}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
 
         </>
     )

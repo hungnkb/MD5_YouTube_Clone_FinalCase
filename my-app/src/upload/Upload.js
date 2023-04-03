@@ -1,12 +1,16 @@
-import { Button, IconButton, Stack, Box, Input, Select, MenuItem, InputLabel, Container } from "@mui/material"
+import {Button, IconButton, Stack, Box, Input, Select, MenuItem, InputLabel, Container, FormGroup} from "@mui/material"
 import { useState } from "react";
 import axios from "axios";
 import { TableUpload } from "./Table";
-
+import { useSelector } from "react-redux";
+import {FormControl, FormLabel} from "@mui/joy";
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
 export const Upload = () => {
     const [fileUploadName, setFileUploadName] = useState('');
     const [fileUpload, setFileUpload] = useState('');
     const [selected, setSelected] = useState('');
+    const currentState = useSelector(state => state.auth);
     const handleBrowseFile = (event) => {
         let filePath = event.target.value;
         let fileUploadSplit = filePath.split("\\")[2]
@@ -59,6 +63,7 @@ export const Upload = () => {
         formData.append('title', e.target.title.value);
         formData.append('tags', e.target.tags.value);
         formData.append('description', e.target.description.value);
+        formData.append('rToken', currentState.user.rToken)
         let response = await axios.post('http://localhost:9090/upload', formData, {
             headers: { 'Content-Type': 'multipart/form-data' }
         });
@@ -74,54 +79,63 @@ export const Upload = () => {
         <>
             <Container maxWidth="sm">
                 <form onSubmit={e => handleUploadFile(e)} encType="multipart/form-data">
-                    <Button type="button" variant="contained" component="label">
-                        Browse
-                        <input hidden onChange={(event) => handleBrowseFile(event)} accept="video/mp4" multiple type="file" />
-                    </Button>
                     <IconButton color="primary" aria-label="upload picture" component="label">
                     </IconButton>
                     <p>{fileUploadName}</p>
 
                     <div>
-                        <div>
-                            <Input
-                                name="title"
-                                id="title"
-                                placeholder="title"
-                            />
-                        </div>
-                        <div>
-                            <Input
+                        {/*<div>*/}
+                        {/*    <Input*/}
+                        {/*        name="title"*/}
+                        {/*        id="title"*/}
+                        {/*        placeholder="title"*/}
+                        {/*    />*/}
+                        {/*</div>*/}
+                        {/*<div>*/}
+                        {/*    <Input*/}
+                        {/*        name="description"*/}
+                        {/*        id="description"*/}
+                        {/*        placeholder="description"*/}
+                        {/*    />*/}
+                        {/*</div>*/}
+                        {/*<div>*/}
+                        {/*    <Input*/}
+                        {/*        name="tags"*/}
+                        {/*        id="tags"*/}
+                        {/*        placeholder="tags"*/}
+                        {/*    />*/}
+                        {/*</div>*/}
+                        <FloatingLabel controlId="floatingPassword" label="Title">
+                            <Form.Control type="text" id="title" name="title" placeholder="Tittle" />
+                        </FloatingLabel>
+                        <br/>
+                        <FloatingLabel controlId="floatingPassword" label="Tags">
+                            <Form.Control type="text" id="tags" name="tags" placeholder="Tags" />
+                        </FloatingLabel>
+                        <br/>
+                        <FloatingLabel controlId="floatingTextarea2" label="Description">
+                            <Form.Control
+                                as="textarea"
+                                placeholder="Leave a comment here"
+                                style={{ height: '100px' }}
                                 name="description"
                                 id="description"
-                                placeholder="description"
                             />
-                        </div>
-                        <div>
-                            <Input
-                                name="tags"
-                                id="tags"
-                                placeholder="tags"
-                            />
-                        </div>
-                        {/* <InputLabel id="demo-simple-select-label">Category</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            label="Please choose one"
-                            value={selected}
-                            onChange={handleChangeSelect}
-                        >
-                            {menuItems.map((item, index) => (
-                                <MenuItem key={index} value={Object.keys(item)[0]}>{item[Object.keys(menuItems[index])]}</MenuItem>
-                            ))}
-                        </Select> */}
+                        </FloatingLabel>
                     </div>
-                    <Button variant="contained" type="submit">Upload</Button>
+                    <Stack>
+                        <Button style={{width:150}}  variant="secondary" type="button"  component="label">
+                            Choose file
+                            <input style={{width:70}} hidden onChange={(event) => handleBrowseFile(event)} accept="video/mp4" multiple type="file" />
+                        </Button>
+                        {/*<FloatingLabel controlId="floatingPassword" label="Choose file">*/}
+                        {/*    <Form.Controlstyle hidden onChange={(event) => handleBrowseFile(event)} accept="video/mp4" multiple type="file" />*/}
+                        {/*</FloatingLabel>*/}
+                        {/*<br/>*/}
+                        <Button style={{width:30}} variant="contained" type="submit">Upload</Button>
+                    </Stack>
                 </form>
-
             </Container>
-
             <TableUpload />
         </>
     )

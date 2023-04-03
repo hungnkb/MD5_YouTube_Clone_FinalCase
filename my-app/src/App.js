@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 import { Profile } from "./components/profile/Profile";
-
+import "bootstrap/dist/css/bootstrap.css";
 
 const App = () => {
   const [res, setRes] = useState('');
