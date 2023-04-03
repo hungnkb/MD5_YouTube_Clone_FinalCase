@@ -32,7 +32,7 @@ export const Profile = () => {
 
     return (
         <>
-            {videoList.length > 0 ? <Stack sx={{ display: 'flex', flexWrap: 'wrap' }} direction='row'>
+            {videoList ? <Stack sx={{ display: 'flex', flexWrap: 'wrap' }} direction='row'>
                 {videoList.length > 0 && (
                     videoList.map((video, index) => {
                         return <VideoCardHr key={index} video={video} channel={channel} />
