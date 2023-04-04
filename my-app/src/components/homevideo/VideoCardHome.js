@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
@@ -15,17 +15,17 @@ const VideoCardHome = ({ video: { id: { videoId }, snippet } }) => {
                 </Link>
             </CardMedia>
             <CardContent sx={{ backgroundColor: "white", height: '100px' }}>
-                <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
+                <NavLink style={{textDecoration: 'none'}} to={videoId ? `/video/${videoId}` : demoVideoUrl}>
                     <Typography variant="subtitle1" fontWeight="bold" color="black">
                         {snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
                     </Typography>
-                </Link>
-                <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl} >
+                </NavLink>
+                <NavLink style={{textDecoration: 'none'}} to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl} >
                     <Typography variant="subtitle2" color="gray">
                         {snippet?.channelTitle || demoChannelTitle}
                         <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
                     </Typography>
-                </Link>
+                </NavLink>
             </CardContent>
             <div className="overlay">
             </div>
