@@ -1,16 +1,23 @@
-import {Button, IconButton, Stack, Box, Input, Select, MenuItem, InputLabel, Container, FormGroup} from "@mui/material"
+import { Button, IconButton, Stack, Box, Input, Select, MenuItem, InputLabel, Container, FormGroup } from "@mui/material"
 import { useState } from "react";
 import axios from "axios";
 import { TableUpload } from "./Table";
 import { useSelector } from "react-redux";
-import {FormControl, FormLabel} from "@mui/joy";
+import { FormControl, FormLabel } from "@mui/joy";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 export const Upload = () => {
     const [fileUploadName, setFileUploadName] = useState('');
     const [fileUpload, setFileUpload] = useState('');
     const [selected, setSelected] = useState('');
     const currentState = useSelector(state => state.auth);
+    const navigate = useNavigate();
+    const MySwal = withReactContent(Swal)
+
     const handleBrowseFile = (event) => {
         let filePath = event.target.value;
         let fileUploadSplit = filePath.split("\\")[2]
@@ -66,7 +73,17 @@ export const Upload = () => {
             headers: { 'Content-Type': 'multipart/form-data' }
         });
         if (response) {
-            console.log(response);
+            MySwal.fire({
+                title: <p>Uploading...</p>,
+                didOpen: () => {
+                    // `MySwal` is a subclass of `Swal` with all the same instance & static methods
+                    MySwal.showLoading()
+                },
+            }).then(() => {
+                MySwal.fire(<p>Your video will be comming soon...</p>)
+                return navigate('/profile')
+                
+            })
         }
     }
 
@@ -79,17 +96,15 @@ export const Upload = () => {
                 <form onSubmit={e => handleUploadFile(e)} encType="multipart/form-data">
                     <IconButton color="primary" aria-label="upload picture" component="label">
                     </IconButton>
-                    <p>{fileUploadName}</p>
-
                     <div>
                         <FloatingLabel controlId="floatingPassword" label="Title">
                             <Form.Control type="text" id="title" name="title" placeholder="Tittle" />
                         </FloatingLabel>
-                        <br/>
+                        <br />
                         <FloatingLabel controlId="floatingPassword" label="Tags">
                             <Form.Control type="text" id="tags" name="tags" placeholder="Tags" />
                         </FloatingLabel>
-                        <br/>
+                        <br />
                         <FloatingLabel controlId="floatingTextarea2" label="Description">
                             <Form.Control
                                 as="textarea"
@@ -101,15 +116,17 @@ export const Upload = () => {
                         </FloatingLabel>
                     </div>
                     <Stack>
-                        <Button style={{width:150}}  variant="secondary" type="button"  component="label">
+                        <Stack style={{display: 'flex', alignItems: 'center'}} direction={'row'}> <Button style={{ width: 150 }} variant="secondary" type="button" component="label">
                             Choose file
-                            <input style={{width:70}} hidden onChange={(event) => handleBrowseFile(event)} accept="video/mp4" multiple type="file" />
+                            <input style={{ width: 70 }} hidden onChange={(event) => handleBrowseFile(event)} accept="video/mp4" multiple type="file" />
                         </Button>
+                            <div>{fileUploadName}</div></Stack>
+
                         {/*<FloatingLabel controlId="floatingPassword" label="Choose file">*/}
                         {/*    <Form.Controlstyle hidden onChange={(event) => handleBrowseFile(event)} accept="video/mp4" multiple type="file" />*/}
                         {/*</FloatingLabel>*/}
                         {/*<br/>*/}
-                        <Button style={{width:30}} variant="contained" type="submit">Upload</Button>
+                        <Button style={{ width: 30 }} variant="contained" type="submit">Upload</Button>
                     </Stack>
                 </form>
             </Container>
