@@ -10,6 +10,10 @@ a {
   color: black;
 }
 
+.css-1hzjt4p-MuiStack-root {
+  z-index: 9999;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
