@@ -1,19 +1,20 @@
 import axios from 'axios';
 
-export const BASE_URL = 'https://youtube-v31.p.rapidapi.com';
+export const BASE_URL = 'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=';
 
-export const fetchNextPage = async (url, nextPageToken) => {
+export const fetchNextPage = async (nextPageToken, aToken) => {
     const options = {
         params: {
             maxResults: 20,
-            nextPageToken: nextPageToken,
+            pageToken: nextPageToken,
         },
         headers: {
-            'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
-            'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com',
+            Authorization: `Bearer ${aToken}`,
+            Accept: 'application/json'
         },
     };
-
-    const { data } = await axios.get(`${BASE_URL}/${url}`, options);
+    
+    const { data } = await axios.get(`${BASE_URL}${process.env.REACT_APP_API_KEY}`, options);
+    // console.log(data);
     return data;
 };

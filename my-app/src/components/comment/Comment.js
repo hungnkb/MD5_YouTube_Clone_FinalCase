@@ -15,9 +15,7 @@ const Comment = (props) => {
     useEffect(() => {
         axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyB_bL1Q50ZCMfBJxTndy55Hs4Yxo--u_MI&videoId=${props.data}&part=snippet&maxResults=100`)
             .then((data) => setComments(data.data.items))
-        console.log('more')
     }, [props])
-    console.log(typeof (props.flag))
     return (
         <Stack>
       <Box>

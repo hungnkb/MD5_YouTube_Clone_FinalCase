@@ -38,7 +38,6 @@ export const Profile = () => {
 
     useEffect(() => {
         setVideos(null);
-        console.log(selectedCategory);
         fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
             .then((data) => setVideos(data.items))
     }, [selectedCategory]);

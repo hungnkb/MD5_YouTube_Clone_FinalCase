@@ -16,7 +16,6 @@ const App = () => {
   const [res, setRes] = useState('');
   const dispatch = useDispatch();
   const currentState = useSelector(state => state.auth);
-  console.log(currentState);
 
   useEffect(() => {
     let getDataUser = async () => {
