@@ -26,6 +26,7 @@ textarea {
     background-color: #f6f6f6;
     transition: height 0.2s ease-in-out;
     margin: 0;
+    height: 80px;
 }
 
 textarea:focus {

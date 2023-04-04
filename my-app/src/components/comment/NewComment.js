@@ -35,12 +35,11 @@ const NewComment = (props) => {
                 'Authorization': `Bearer ${accessToken}`
             }
         })
-            .then(response => {
-                console.log(response);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+          .then(response => {
+          })
+          .catch(error => {
+            console.error(error);
+          });
         sendData()
     }
     return (
