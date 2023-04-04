@@ -54,8 +54,6 @@ export const Upload = () => {
     ]
 
 
-
-
     const handleUploadFile = async (e) => {
         e.preventDefault();
         let formData = new FormData();
@@ -84,27 +82,6 @@ export const Upload = () => {
                     <p>{fileUploadName}</p>
 
                     <div>
-                        {/*<div>*/}
-                        {/*    <Input*/}
-                        {/*        name="title"*/}
-                        {/*        id="title"*/}
-                        {/*        placeholder="title"*/}
-                        {/*    />*/}
-                        {/*</div>*/}
-                        {/*<div>*/}
-                        {/*    <Input*/}
-                        {/*        name="description"*/}
-                        {/*        id="description"*/}
-                        {/*        placeholder="description"*/}
-                        {/*    />*/}
-                        {/*</div>*/}
-                        {/*<div>*/}
-                        {/*    <Input*/}
-                        {/*        name="tags"*/}
-                        {/*        id="tags"*/}
-                        {/*        placeholder="tags"*/}
-                        {/*    />*/}
-                        {/*</div>*/}
                         <FloatingLabel controlId="floatingPassword" label="Title">
                             <Form.Control type="text" id="title" name="title" placeholder="Tittle" />
                         </FloatingLabel>

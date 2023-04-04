@@ -33,7 +33,7 @@ const Navbar = () => {
                 {currentState.isLogined ?
                     (
                         <>
-                                <FileUploadIcon onClick={handleShow}/>
+                                <FileUploadIcon style={{marginLeft:"550px"}} onClick={handleShow}/>
 
                                 <MenuProfile title={currentState.user.dataUser.displayName}
                                              avatar={currentState.user.dataUser.photos[0].value}/>

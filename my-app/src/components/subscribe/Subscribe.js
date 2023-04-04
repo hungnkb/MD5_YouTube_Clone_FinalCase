@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import axios from "axios";
 import {Avatar, Box, Grid, List, ListItemButton, ListItemIcon, ListItemText, Paper} from "@mui/material";
 import {ListItem} from "../test";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import Row from 'react-bootstrap/Row';
 import {Stack} from "@mui/system";
 
@@ -33,9 +33,10 @@ function Subscribe(){
 
     return(
         <>
-            <h5 onClick={() => setFlag(!flag)}> ─ Subscribes Channel ─</h5>
+            <hr/>
+        <center>  <h6 onClick={() => setFlag(!flag)}>  Subscribes Channel</h6> </center>
             {subscribeChannels.map((subscribeChannel) => (
-            <Link to={`/channel/${subscribeChannel.snippet.resourceId.channelId}`}>
+            <NavLink style={{textDecoration:"none"}} to={`/channel/${subscribeChannel.snippet.resourceId.channelId}`}>
             <Paper style={{ padding: "8px 10px" }}>
                 <Grid container wrap="nowrap" spacing={2} style={{backgroundColor: "white"}}>
                 <Grid item>
@@ -46,7 +47,7 @@ function Subscribe(){
                 </Grid>
                 </Grid>
             </Paper>
-            </Link>
+            </NavLink>
             ))}
         </>
     )

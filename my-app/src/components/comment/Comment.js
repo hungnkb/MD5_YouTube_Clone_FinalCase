@@ -25,7 +25,7 @@ const Comment = (props) => {
                     </Grid>
                     <Grid justifyContent="left" item xs zeroMinWidth>
                         <h4 style={{ margin: 0, textAlign: "left" }}>hi</h4>
-                        <p style={{ textAlign: "left", color: "black", width: "1300px"}}>
+                        <p style={{ textAlign: "left", color: "black", width: "760px"}}>
                             {props.flag}
                         </p>
                         <p style={{ textAlign: "left", color: "gray" }}>

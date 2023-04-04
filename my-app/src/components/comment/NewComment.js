@@ -13,7 +13,7 @@ const NewComment = (props) => {
         props.parentCallback(newcomment);
     }
 
-    const  handleChange = (event) => {
+    const handleChange = (event) => {
         setNewComment(event.target.value);
     }
 
@@ -35,26 +35,37 @@ const NewComment = (props) => {
                 'Authorization': `Bearer ${accessToken}`
             }
         })
-          .then(response => {
-              console.log(response);
-          })
-          .catch(error => {
-            console.error(error);
-          });
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.error(error);
+            });
         sendData()
-      }
-    return(
-        <div style={{ marginLeft: 25 }} className="comment-box">
+    }
+    return (
+        <div style={{marginLeft: 25}} className="comment-box">
             <img src={imgUser} alt="Avatar" className="avatar"/>
-                <div className="comment-form">
+            <div className="comment-form">
                 <form onClick={handleSubmit}>
-                    <textarea onChange={handleChange}  id="comment-input" name="comment-input" rows="1"
-                              placeholder="Thêm bình luận của bạn"></textarea>
-                    <button className="comment-button" type={"submit"} >Post</button>
-                    </form>
-                </div>
+                    <textarea style={{width: 650}} onChange={handleChange} id="comment-input" name="comment-input"
+                              rows="1"
+                              placeholder="Add comment of you.."></textarea>
+                    <br/>
+                    <div className="row">
+                        <div className="col-9">
+                            <button style={{borderRadius: 20, marginLeft: "450px"}} id="comment-button"
+                                    className="btn btn-light" type={"submit"}>Cancel
+                            </button> </div>
+                        <div className="col-3">
+                            <button style={{borderRadius: 20,marginLeft:"20px"}} id="comment-button"
+                                    className="btn btn-light" type={"submit"}>Comment
+                            </button> </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
-)
+    )
 }
 export default NewComment

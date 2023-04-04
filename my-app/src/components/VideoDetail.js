@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import {Link, NavLink, useParams} from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack, Divider, Avatar, Grid, Paper  } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
@@ -50,7 +50,7 @@ const VideoDetail = () => {
               <Stack direction={{ xs: "column", md: "row"}}>
                 <div>
                   <Box flex={1}>
-                    <Box sx={{ width: 760, position: "sticky", top: "36px" }}>
+                    <Box sx={{ width: 800, position: "sticky", top: "36px" }}>
                       <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
                       <Typography color="black" variant="h5" fontWeight="bold" p={2}>
                         {title}
@@ -59,12 +59,12 @@ const VideoDetail = () => {
                         <NewComment data={data} parentCallback={callbackFunction} />
                       <Comment data={data} flag={flag}/>
                       <Stack direction="row" justifyContent="space-between" sx={{ color: "black" }} py={1} px={2} >
-                        <Link to={`/channel/${channelId}`}>
+                        <NavLink style={{textDecoration:"none"}} to={`/channel/${channelId}`}>
                           <Typography variant={{ sm: "subtitle1", md: 'h6' }} color="black" >
                             {channelTitle}
                             <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
                           </Typography>
-                        </Link>
+                        </NavLink>
                         <Stack direction="row" gap="20px" alignItems="center">
                           <Typography variant="body1" sx={{ opacity: 0.7 }}>
                             {parseInt(viewCount).toLocaleString()} views
