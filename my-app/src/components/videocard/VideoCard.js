@@ -10,28 +10,29 @@ import { Stack } from '@mui/system';
 
 export const VideoCardHr = (props) => {
     const videoData = props.video;
+    console.log('zzzzzzzzzzzzz', props.video);
     const channelData = props.channel;
     return (
         <>
             <Card sx={{ width: { xs: '90%', sm: '300px'}, boxShadow: "none", borderRadius: 4, marginRight: '25px' }} >
-                <Link to={videoData.video.videoId ? `/video/${videoData.video.videoId}` : ''}>
+                <Link to={videoData.id.videoId ? `/video/${videoData.video.videoId}` : ''}>
                     <CardMedia
                         sx={{ width: { xs: '90%', sm: '300px' }, height: 150,borderRadius: 4 }}
-                        image={videoData.video.thumbnails[3].url}
-                        title={videoData.video.title}
+                        image={videoData.id.thumbnails[3].url}
+                        title={videoData.id.title}
                     />
                 </Link>
 
                 <CardContent>
-                    <NavLink style={{textDecoration:"none"}} to={videoData.video.videoId ? `/video/${videoData.video.videoId}` : ''}>
+                    <NavLink style={{textDecoration:"none"}} to={videoData.id.videoId ? `/video/${videoData.id.videoId}` : ''}>
                         <Typography style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }} variant="subtitle1" fontWeight="bold" color="black">
-                            {videoData.video.title}
+                            {videoData.id.title}
                         </Typography>
                     </NavLink>
                     <Stack direction='row'>
-                        <Typography variant='subtitle2' color="gray">Views: {videoData.video.stats.views}</Typography>
+                        <Typography variant='subtitle2' color="gray">Views: {videoData.id.stats.views}</Typography>
                         <FiberManualRecordIcon sx={{ width: '4px', margin: '0px 5px 0px 5px', textAlign: 'center' }} />
-                        <Typography variant='subtitle2' color="gray">Views: {videoData.video.publishedTimeText}</Typography>
+                        <Typography variant='subtitle2' color="gray">Views: {videoData.id.publishedTimeText}</Typography>
                     </Stack>
 
                 </CardContent>

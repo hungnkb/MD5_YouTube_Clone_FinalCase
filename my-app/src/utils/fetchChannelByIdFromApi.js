@@ -11,13 +11,18 @@ export const fetchChannelByIdFromApi = async (aToken) => {
     let idChannel = data.items[0].id
     const options = {
         method: 'GET',
-        url: 'https://youtube138.p.rapidapi.com/channel/videos/',
-        params: { id: idChannel, hl: 'en', gl: 'US' },
+        url: 'https://youtube-v31.p.rapidapi.com/search',
+        params: {
+            channelId: idChannel,
+            part: 'snippet,id',
+            order: 'date',
+            maxResults: '50'
+        },
         headers: {
             'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY2,
-            'X-RapidAPI-Host': 'youtube138.p.rapidapi.com'
+            'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
         }
     }
     const videoList = await axios.request(options)
-   return videoList.data.contents;
+    return videoList.data.items;
 };

@@ -8,12 +8,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Avatar from '@mui/material/Avatar';
 import { maxWidth } from "@mui/system";
 import LogoutIcon from '@mui/icons-material/Logout';
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import axios from "axios";
 
 export const MenuProfile = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    const navigate = useNavigate();
 
     const title = props.title;
     const avatar = props.avatar;
@@ -88,9 +89,9 @@ export const MenuProfile = (props) => {
                         <ListItemIcon>
                             <AccountCircleIcon/>
                         </ListItemIcon>
-                        <NavLink style={{textDecoration:"none",color:"black"}} to='/profile'>
+                        <div style={{textDecoration:"none",color:"black"}} onClick={() => navigate('/profile')}>
                         Profile
-                        </NavLink>
+                        </div>
                     </MenuItem>
                     <Divider />
                     <MenuItem onClick={handleLogout}>
