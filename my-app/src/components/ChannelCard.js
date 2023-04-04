@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, CardContent, CardMedia, Typography } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { Link } from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import { demoProfilePicture } from '../utils/constants';
 
 const ChannelCard = ({ channelDetail, marginTop }) => (
@@ -18,8 +18,8 @@ const ChannelCard = ({ channelDetail, marginTop }) => (
       marginTop,
     }}
   >
-    <Link to={`/channel/${channelDetail?.id?.channelId}`}>
-      <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', color: "white" }}>
+    <NavLink style={{textDecoration:"none"}} to={`/channel/${channelDetail?.id?.channelId}`}>
+      <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', color: "black" }}>
         <CardMedia
           image={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
           alt={channelDetail?.snippet?.title}
@@ -35,7 +35,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => (
           </Typography>
         )}
       </CardContent>
-    </Link>
+    </NavLink>
   </Box>
 );
 

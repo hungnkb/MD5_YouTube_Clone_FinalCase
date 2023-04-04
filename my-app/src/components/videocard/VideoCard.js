@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { Stack } from '@mui/system';
 
@@ -15,21 +15,21 @@ export const VideoCardHr = (props) => {
     console.log(channelData);
     return (
         <>
-            <Card sx={{ width: { xs: '100%', sm: '358px', md: "320px" }, boxShadow: "none", borderRadius: 4, marginRight: '10px' }} >
+            <Card sx={{ width: { xs: '90%', sm: '300px'}, boxShadow: "none", borderRadius: 4, marginRight: '25px' }} >
                 <Link to={videoData.video.videoId ? `/video/${videoData.video.videoId}` : ''}>
                     <CardMedia
-                        sx={{ width: { xs: '100%', sm: '358px' }, height: 180 }}
+                        sx={{ width: { xs: '90%', sm: '300px' }, height: 150,borderRadius: 4 }}
                         image={videoData.video.thumbnails[3].url}
                         title={videoData.video.title}
                     />
                 </Link>
 
                 <CardContent>
-                    <Link to={videoData.video.videoId ? `/video/${videoData.video.videoId}` : ''}>
+                    <NavLink style={{textDecoration:"none"}} to={videoData.video.videoId ? `/video/${videoData.video.videoId}` : ''}>
                         <Typography style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }} variant="subtitle1" fontWeight="bold" color="black">
                             {videoData.video.title}
                         </Typography>
-                    </Link>
+                    </NavLink>
                     <Stack direction='row'>
                         <Typography variant='subtitle2' color="gray">Views: {videoData.video.stats.views}</Typography>
                         <FiberManualRecordIcon sx={{ width: '4px', margin: '0px 5px 0px 5px', textAlign: 'center' }} />

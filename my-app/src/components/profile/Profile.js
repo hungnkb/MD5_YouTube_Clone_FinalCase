@@ -60,19 +60,19 @@ export const Profile = () => {
                                 />
                             </center>
                         </div>
-                        <div className="col-6">
+                        <div className="col-4">
                             <h3>Hường Xink</h3>
                             <p>@huongxink6618 </p>
                             <p>Không có người đăng ký</p>
                             <p> 0 video</p>
                         </div>
-                        <div className="col-4">
+                        <div className="col-6">
                             <div className="row">
                                 <div className="col-5">
-                                    <Button variant="light">Tùy chỉnh kênh</Button>
+                                    <Button style={{borderRadius:"20px"}} variant="light"> <h6>Channel customization</h6></Button>
                                 </div>
-                                <div className="col-5">
-                                    <Button variant="light">Quản lí video</Button>
+                                <div className="col-6">
+                                    <Button style={{borderRadius:"20px"}} variant="light"> <h6>Video management</h6></Button>
                                 </div>
                             </div>
                         </div>

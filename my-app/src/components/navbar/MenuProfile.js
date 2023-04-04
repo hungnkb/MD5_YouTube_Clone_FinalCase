@@ -88,7 +88,7 @@ export const MenuProfile = (props) => {
                         <ListItemIcon>
                             <AccountCircleIcon/>
                         </ListItemIcon>
-                        <NavLink to='/profile'>
+                        <NavLink style={{textDecoration:"none",color:"black"}} to='/profile'>
                         Profile
                         </NavLink>
                     </MenuItem>

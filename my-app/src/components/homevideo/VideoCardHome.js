@@ -15,12 +15,12 @@ const VideoCardHome = ({ video: { id: { videoId }, snippet } }) => {
                 </Link>
             </CardMedia>
             <CardContent sx={{ backgroundColor: "white", height: '100px' }}>
-                <NavLink style={{ textDecoration: 'none' }} to={videoId ? `/video/${videoId}` : demoVideoUrl}>
+                <NavLink style={{textDecoration:"none"}} to={videoId ? `/video/${videoId}` : demoVideoUrl}>
                     <Typography variant="subtitle1" fontWeight="bold" color="black">
                         {snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
                     </Typography>
                 </NavLink>
-                <NavLink style={{ textDecoration: 'none' }} to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl} >
+                <NavLink style={{textDecoration:"none"}} to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl} >
                     <Typography variant="subtitle2" color="gray">
                         {snippet?.channelTitle || demoChannelTitle}
                         <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
