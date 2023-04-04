@@ -9,6 +9,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { Stack } from '@mui/system';
 
 export const VideoCardHr = (props) => {
+    console.log(props);
     const videoData = props.video;
     const channelData = props.channel;
     console.log(channelData);

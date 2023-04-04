@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 
 // export const ModalUpload = (props) => {
 
-//     return (
+//     return (console.log
 //         <>
 //             <Modal show={props.setShow[0]} onHide={props.handleClose}>
 //                 <Modal.Header closeButton>
