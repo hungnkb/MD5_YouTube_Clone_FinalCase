@@ -3,7 +3,9 @@ import { Stack, Box } from "@mui/material";
 import VideoCard from "./VideoCardHome";
 
 
-import { ChannelCard, Loader } from "../index";
+import {ChannelCard, Loader, Sidebar} from "../index";
+import {fetchFromAPI} from "../../utils/fetchFromAPI";
+
 
 const Videos = ({ videos, direction, isNextPage }) => {
   const [currentRef, setCurrentRef] = useState(0);

@@ -8,7 +8,9 @@ import axios from 'axios';
 import { login } from "./redux/features/authSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+
 import { Profile } from "./components/profile/Profile";
+import "bootstrap/dist/css/bootstrap.css";
 
 const App = () => {
   const [res, setRes] = useState('');
@@ -32,7 +34,6 @@ const App = () => {
 
 
   return (
-
     <BrowserRouter BrowserRouter >
       <Box sx={{ backgroundColor: 'white' }}>
         <Navbar />
