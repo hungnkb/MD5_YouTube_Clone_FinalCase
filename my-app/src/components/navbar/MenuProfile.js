@@ -86,11 +86,11 @@ export const MenuProfile = (props) => {
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
                     <MenuItem onClick={handleClose}>
-                        <ListItemIcon>
-                            <AccountCircleIcon/>
+                        <ListItemIcon onClick={() => navigate('/profile')}>
+                            <AccountCircleIcon />
                         </ListItemIcon>
-                        <div style={{textDecoration:"none",color:"black"}} onClick={() => navigate('/profile')}>
-                        Profile
+                        <div style={{ textDecoration: "none", color: "black" }} onClick={() => navigate('/profile')}>
+                            Profile
                         </div>
                     </MenuItem>
                     <Divider />
